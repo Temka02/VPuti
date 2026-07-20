@@ -1,10 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
 import { Provider } from "react-redux";
 import { store } from "./store.ts";
 import AuthProvider from "./providers/AuthProvider.tsx";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router/router.tsx";
 
 async function enableMocking() {
   if (import.meta.env.MODE !== "development") {
@@ -22,7 +23,7 @@ enableMocking().then(() => {
     <StrictMode>
       <Provider store={store}>
         <AuthProvider>
-          <App />
+          <RouterProvider router={router} />
         </AuthProvider>
       </Provider>
     </StrictMode>,
